@@ -1,8 +1,14 @@
 let name = null;
+let btnInput = document.querySelector('#btnInput');
+let msgInput = document.querySelector('#msgInput');
 
 function onLoad() {
     document.querySelector('#nome').innerText = name ?? 'visitante';
     document.querySelector('.messageBox').classList.add('initMessage');
+    
+
+    msgInput.readOnly = true;
+    btnInput.disabled = true;
 
     let elipsesBox = document.querySelector('.lds-ellipsis');
     let msgBox = document.querySelector('.messageBox');
@@ -37,11 +43,51 @@ function onLoad() {
 
     setTimeout(() => {
         document.querySelector('#msgContent').style.display = 'block';
+        msgInput.readOnly = false;
     }, 6000);
-
-    
 }
 
 function showInput() {
-    console.log('showInput');
+    msgInput.readOnly = true;
+    btnInput.disabled = true;  
+
+    let msgBoxUser = document.querySelector('#user');
+    let msgContent = document.querySelector('.msgContent#user');
+    updateName(document.querySelector('#msgInput').value);
+    
+    document.querySelector('#msgInput').value = '';
+
+    let msg = document.createElement('p')
+
+    msgBoxUser.classList.add('sendMessage');
+
+    setTimeout(() => {
+        msg.textContent = name;
+        msgContent.appendChild(msg);
+        msg.classList.add('fadeIn');
+    }, 600);
+
+    // setTimeout(() => {
+        
+    // }, 650)
+
+    setTimeout(() => {
+        msgBoxUser.classList.remove('sendMessage');
+        msgBoxUser.style.opacity = '1';
+        msgBoxUser.style.width = 'fit-content';
+        msgBoxUser.style.height = 'fit-content';
+    }, 700);
+      
+}
+
+function updateName(newName) {
+    name = newName;    
+}
+
+function onInput() {
+    if (msgInput.value.length != 0) {
+        btnInput.disabled = false;
+    } else {
+        btnInput.disabled = true;
+    }
 }

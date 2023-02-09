@@ -13,7 +13,7 @@
 }
 
 body {
-    background-color: var(--black);
+    background-color: var(--gray);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,6 +22,43 @@ body {
     min-height: 100vh;
 }
 
+div.input {
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    border: none;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 10px;
+    width: 80%;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+input[type="submit"] {
+    width: 10%;
+    background-color: var(--cyan);
+    /* border-radius: 50%; */
+    border-top-right-radius: 30%;
+    border-bottom-right-radius: 30%;
+    background-image: url('./assets/send.png');
+    background-repeat: no-repeat;
+    background-position: 60%;
+    background-size: 45%;
+}
+
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
 div.container {
     width: 100%;
     height: 92%;
@@ -29,7 +66,7 @@ div.container {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--dark-blue);
+    background-color: var(--black);
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
 }
@@ -43,6 +80,7 @@ div.header {
 }
 
 div.chat {
+    padding-top: 10px;
     width: 95%;
     height: 95%;
 }
@@ -52,10 +90,19 @@ div.messageBox {
     height: 5%;
     max-width: 45%;
     border-radius: 25px;
-    background-color: var(--black);
+    background-color: var(--dark-blue);
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+div.messageBox#user {
+    background-color: var(--cyan);
+    float: right;
+    width: 30%;
+    height: 10%;
+    padding: 5px 20px;
+    opacity: 0;
 }
 
 div.msgContent {
@@ -67,13 +114,13 @@ div.msgContent {
     justify-content: center;
 }
 
-h1,  span#nome {
+h1,  span, p {
     color: var(--white);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 span#nome {
-    padding-left: 5px;
+    padding-left: 1px;
 }
 
 .msgContent span {
@@ -98,11 +145,15 @@ span#nome {
     }
     
     .showMessage {
-        animation: sendMessage 1s backwards;
+        animation: upMessage 1s backwards;
     }
 
     .initMessage {
         animation: toRight 0.8s backwards;
+    }
+
+    .sendMessage {
+        animation: sendMessage 1s backwards;
     }
 
 
@@ -139,6 +190,10 @@ span#nome {
 
 .lds-ellipsis div:nth-child(4) {
     left: 28px;
+}
+
+.fadeIn {
+    animation: fadeIn 0.5s backwards;
 }
 
 @keyframes lds-ellipsis1 {
@@ -190,12 +245,45 @@ span#nome {
     }
 }
 
-@keyframes sendMessage {
+@keyframes upMessage {
     from {
         width: 15%;
         height: 5%;
     } to {
         width: 45%;
         height: 13%;
+    }
+}
+
+@keyframes sendMessage {
+    0% {
+        opacity: 0.3;
+        transform: translateY(300px);
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+    } 50% {
+        opacity: 1;
+        transform: translateY(0);
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        border-radius: 50%;
+    } 100% {
+        /* width: 15%;
+        height: 10%; */
+        opacity: 1;
+        width: fit-content;
+        height: fit-content;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
