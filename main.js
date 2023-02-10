@@ -54,7 +54,8 @@ function showInput() {
     let msgBoxUser = document.querySelector('#user');
     let msgContent = document.querySelector('.msgContent#user');
     updateName(document.querySelector('#msgInput').value);
-    
+    document.querySelector('#nome').innerText = name;
+
     document.querySelector('#msgInput').value = '';
 
     let msg = document.createElement('p')
@@ -78,6 +79,7 @@ function showInput() {
         msgBoxUser.style.height = 'fit-content';
     }, 700);
       
+    loadMessage2();
 }
 
 function updateName(newName) {
@@ -90,4 +92,39 @@ function onInput() {
     } else {
         btnInput.disabled = true;
     }
+}
+
+function loadMessage2() {
+    let msgName = document.querySelector('#msgName');
+
+    let chat = document.querySelector('.chat');
+
+    // <div class="messageBox" id="msg2">
+    //     <div class="msgContent">
+    //         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+
+    //         <span id="msgContent">Olá, <span id="msgName"></span>, tudo tranquilo?</span>
+    //     </div>
+    // </div>
+
+    let msgBox = document.createElement('div');
+    msgBox.classList.add('messageBox');
+    msgBox.id ='msg2';
+
+    let msgContent = document.createElement('div');
+    msgContent.classList.add('msgContent');
+
+    let contentMsg = document.createElement('span');
+    contentMsg.textContent = `Olá, ${name}, tudo tranquilo?`;
+    msgContent.appendChild(contentMsg);
+
+    let elipsesElement = document.createElement('div');
+    elipsesElement.classList.add('lds-ellipsis');
+
+    for (let i = 0; i < 4; i ++) {
+        let elipse = document.createElement('div');
+        elipsesElement.appendChild(elipse);
+    }
+
+    chat.appendChild(msgBox);
 }
