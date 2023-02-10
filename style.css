@@ -86,10 +86,9 @@ div.header {
 div.chat {
     padding-top: 10px;
     width: 95%;
-    height: 70%;
+    height: 90%;
     overflow-y: scroll;
     overflow-x: hidden;
-    background-color: wheat;
 }
 
 div.messageBox {
