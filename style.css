@@ -22,6 +22,10 @@ body {
     min-height: 100vh;
 }
 
+html{
+    overflow-y:hidden;
+}
+
 div.input {
     display: flex;
     flex-direction: row;
