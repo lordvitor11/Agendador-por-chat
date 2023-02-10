@@ -72,7 +72,7 @@ div.container {
     background-color: var(--black);
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    padding-top: 15px;
+    /* padding-top: 15px; */
 }
 
 div.header {
